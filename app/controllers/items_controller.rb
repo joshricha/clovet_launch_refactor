@@ -21,10 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def create_history
-
-    user = current_user
-
-    new_history = History.create(user_id: user.id, item_id: params['item_id'])
+    new_history = History.create(user_id: current_user.id, item_id: params['item_id'])
 
     new_history.liked = if params['liked'] == 'true'
                           true
@@ -57,11 +54,8 @@ class ItemsController < ApplicationController
   end
 
   def create_history_from_buy
-    user = current_user
 
-    new_history = History.new
-    new_history.user_id = user.id
-    new_history.item_id = params['item_id']
+    new_history = History.create(user_id: current_user.id, item_id: params['item_id'])
     new_history.liked = if params['liked'] == 'true'
                           true
                         else
@@ -118,8 +112,7 @@ class ItemsController < ApplicationController
 
   def top_category
     # gets all of the items within the category mens/womens
-    @gender_old = params[:gender]
-    @gender = convert_top_level_name(@gender_old)
+    @gender = convert_top_level_name(@params[:gender])
 
     id = Category.where(name: @gender).first.id
     @children = Category.find(id).children
@@ -130,8 +123,7 @@ class ItemsController < ApplicationController
   def category_1
     # gets all the items when we are one category below gender
 
-    @gender_old = params[:gender]
-    @gender = convert_top_level_name(@gender_old)
+    @gender = convert_top_level_name(params[:gender])
     @cat1 = params[:category_1]
 
     @children = Category.find_by(name: @gender).descendants.find_by(name: @cat1).children
