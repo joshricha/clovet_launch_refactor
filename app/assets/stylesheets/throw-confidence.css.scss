@@ -17,13 +17,19 @@
 }
 #yes {
   position: absolute;
+<<<<<<< HEAD
   top: 110px;
   left: 100px;
+=======
+  top: 170px;
+  left: 170px;
+>>>>>>> ed8f817ab812a0e9be44dc7bfd5f8be4701cc447
   font-family: 'Prata', serif;
   color: #fff;
 }
 #no {
   position: absolute;
+<<<<<<< HEAD
   top: 110px;
   left: 80px;
   font-family: 'Prata', serif;
@@ -33,4 +39,10 @@
 
 .imgsource img {
   width: 250px;
+=======
+  top: 170px;
+  left: 150px;
+  font-family: 'Prata', serif;
+  color: #fff;
+>>>>>>> ed8f817ab812a0e9be44dc7bfd5f8be4701cc447
 }

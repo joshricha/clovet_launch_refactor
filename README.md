@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <h1>CLOVET</h1>
+=======
+<h1>CLOVET REFACTORING PROJECT</h1>
+>>>>>>> ed8f817ab812a0e9be44dc7bfd5f8be4701cc447
 <p>This app aims to provide an easy way to browse and shop fashion online.</p>
 <p>The user swipes the image right if they like the item, and swipes left if they don't.</p>
 <p>All liked items will be saved on a wishlist which can be reviewed and edited later.</p>
@@ -82,4 +86,8 @@
 <h1>Links</h1>
 <h4>Heroku</h4>
 <h4>Github</h4>
+<<<<<<< HEAD
 <p>https://github.com/joshricha/project_2</p>
+=======
+<p>https://github.com/joshricha/clovet_launch_refactor</p>
+>>>>>>> ed8f817ab812a0e9be44dc7bfd5f8be4701cc447

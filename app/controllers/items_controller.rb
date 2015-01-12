@@ -22,9 +22,8 @@ class ItemsController < ApplicationController
 
   def create_history
 
-    user = current_user
+    new_history = History.create(user_id: current_user.id, item_id: params['item_id'])
 
-    new_history = History.create(user_id: user.id, item_id: params['item_id'])
 
     new_history.liked = if params['liked'] == 'true'
                           true
@@ -78,7 +77,9 @@ class ItemsController < ApplicationController
   end
 
   def edit_history
+
     current_history_item = current_user.histories.where(:item_id => params['item_id']).first
+
     current_history_item.clicked_through = params['clicked_through']
     current_history_item.save
 
@@ -115,6 +116,7 @@ class ItemsController < ApplicationController
 
   def top_category
     # gets all of the items within the category mens/womens
+
     @gender = convert_top_level_name(params[:gender])
 
     id = Category.where(name: @gender).first.id
@@ -136,6 +138,7 @@ class ItemsController < ApplicationController
   def category_1_view
 
     @gender = convert_top_level_name(params[:gender])
+
     @color = params['color']
 
     @items_cat = Category.find_by(name: @gender).descendants.where("lower(name) = ?", params[:category_1])
@@ -184,7 +187,6 @@ class ItemsController < ApplicationController
     render '/items/category/show.html.erb'
 
   end
-
 
   private
 
