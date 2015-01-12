@@ -83,8 +83,5 @@
 <h1>Links</h1>
 <h4>Heroku</h4>
 <h4>Github</h4>
-<<<<<<< HEAD
-<p>https://github.com/joshricha/project_2</p>
-=======
+
 <p>https://github.com/joshricha/clovet_launch_refactor</p>
->>>>>>> ed8f817ab812a0e9be44dc7bfd5f8be4701cc447
