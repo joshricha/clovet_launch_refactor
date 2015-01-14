@@ -1,5 +1,4 @@
 class ItemsController < ApplicationController
-
   before_action :authenticate, :except => [:index]
 
   def index
@@ -17,7 +16,6 @@ class ItemsController < ApplicationController
 
      # refreshes item if a color is clicked
     @item = next_item if params[:color]
-
   end
 
   def create_history
@@ -103,20 +101,19 @@ class ItemsController < ApplicationController
 
     category = gender.downcase
 
-      if category == "womens"
-        @category = "female"
-        @name = "Womens"
-      elsif category == "mens"
-        @category = "male"
-        @name = "Mens"
-      end
+    if category == "womens"
+      @category = "female"
+      @name = "Womens"
+    elsif category == "mens"
+      @category = "male"
+      @name = "Mens"
+    end
 
     @category
   end
 
   def top_category
     # gets all of the items within the category mens/womens
-
     @gender = convert_top_level_name(params[:gender])
 
     id = Category.where(name: @gender).first.id
@@ -127,7 +124,6 @@ class ItemsController < ApplicationController
 
   def category_1
     # gets all the items when we are one category below gender
-
     @gender = convert_top_level_name(params[:gender])
 
     @children = Category.find_by(name: @gender).descendants.find_by(name: params[:category_1]).children
@@ -136,7 +132,6 @@ class ItemsController < ApplicationController
   end
 
   def category_1_view
-
     @gender = convert_top_level_name(params[:gender])
 
     @color = params['color']
@@ -197,24 +192,21 @@ class ItemsController < ApplicationController
     # if a first-time user (no history yet)
     if @user.histories.count < 20
 
-        if @color == nil
-          @next_item = @items.sample
-        else #there's a color params (whether "" or color)
-            if @color == ""
-              @next_item = @items.sample
-            else
-              @next_item = @items.where(:color => params['color']).sample
-            end
+      if @color == nil
+        @next_item = @items.sample
+      else #there's a color params (whether "" or color)
+          if @color == ""
+            @next_item = @items.sample
+          else
+            @next_item = @items.where(:color => params['color']).sample
+          end
       end
-
 
     # if user has history record
     else
-
       liked_items = @user.histories.where(:liked => true)
 
       brands_liked = liked_items.each_with_object(Hash.new(0)) { |item,counts| counts[item.item.brand] += 1 }
-
 
       counts = []
       # gets all the item counts and adds to 'counts' array
@@ -232,7 +224,6 @@ class ItemsController < ApplicationController
 
       #makes an array of the brand or category that has the highest counts
       fave_brands = brands_liked.map{|item, count| item if highest_counts.include?count }.compact
-
 
       # if there's a color selected
       if @color != nil
