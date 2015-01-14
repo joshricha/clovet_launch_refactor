@@ -1,7 +1,6 @@
 <div class="container">
   <div class="col-md-8 col-centered">
     <h1 class="handwritting">Wishlist</h1>
-
       <ul>
         <% @user_wishlist.each do |item|  %>
         <% wishlist_item = item.item %>
@@ -13,19 +12,13 @@
             $<%= wishlist_item.price %>
 
           <%= link_to '<i class="glyphicon glyphicon-trash"></i>'.html_safe, delete_from_wishlist_path(:item_id => wishlist_item.id), class: "deleting" %>
-
           </p>
-
         </li>
         <% end %>
       </ul>
-
     <%= link_to root_path do %>
       <i class="glyphicon glyphicon-chevron-left"></i> Back
     <% end %>
-
-
-
   </div>
   </div>
 </div>

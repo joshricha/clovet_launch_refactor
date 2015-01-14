@@ -16,30 +16,26 @@
 
       <ul class="nav navbar-nav navbar-right">
 
-
-          <% if !logged_in? %>
-            <li><a href="/login">Log In</a></li>
-          <% end %>
-
-          <% if !logged_in? %>
-            <li><a href="/sign_up">Sign Up</a></li>
-          <% end %>
-
-
-        <% if logged_in? %>
-          <li><a href="/user/wishlist"><i class="fa fa-th-list"></i> Wishlist</a></li>
+        <% if !logged_in? %>
+          <li><a href="/login">Log In</a></li>
         <% end %>
 
-        <% if logged_in? %>
-          <li class="right">
-            <%= link_to login_path, :method => :delete, :data => { :confirm => 'Log out?' } do %>
-      <i class="glyphicon glyphicon-user"></i> Logout
-            <% end %>
-          </li>
+        <% if !logged_in? %>
+          <li><a href="/sign_up">Sign Up</a></li>
         <% end %>
 
 
+      <% if logged_in? %>
+        <li><a href="/user/wishlist"><i class="fa fa-th-list"></i> Wishlist</a></li>
+      <% end %>
 
+      <% if logged_in? %>
+        <li class="right">
+          <%= link_to login_path, :method => :delete, :data => { :confirm => 'Log out?' } do %>
+    <i class="glyphicon glyphicon-user"></i> Logout
+          <% end %>
+        </li>
+      <% end %>
 
       </ul>
     </div><!-- /.navbar-collapse -->
